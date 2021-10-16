@@ -12,7 +12,7 @@ class Graph:
 
         return self.graph
 
-    def BFS(self, g):
+    def BFS(self):
         # queue for dfs visited nodes
         queue = []
         visited = set()
@@ -20,11 +20,11 @@ class Graph:
         # connected component, running loop for every not seeen nodes in graph
         # suppose one connected component is fully traversed,
         # so two print other component we need to run loop for every node if it's not visited
-        for val in range(len(g)):
+        for val,_ in list(self.graph.items()):
             if val not in visited:
+                # mark the val to visited
                 visited.add(val)
                 
-                # mark the val to visited
                 queue.append(val)
 
                 # For every node in queue visit nodes adjacent list add in q if not visited, n mark visited
@@ -32,6 +32,7 @@ class Graph:
                     val = queue.pop(0)
                     print(val, end=" ")
 
+                    # every adjacent node list
                     for i in self.graph[val]:
                         # if adjacent nodes not visited
                         if i not in visited:
@@ -41,13 +42,13 @@ class Graph:
 
 
 g = Graph()
-g.addEdge(0, 1)
-g.addEdge(0, 2)
 g.addEdge(1, 2)
-g.addEdge(2, 0)
 g.addEdge(2, 3)
-g.addEdge(4, 5)
-graph = g.addEdge(3, 3)
+g.addEdge(3, 5)
+g.addEdge(5, 7)
+g.addEdge(4, 6)
+
+# graph = g.addEdge(3, 4)
 
 
-g.BFS(graph)
+g.BFS()
