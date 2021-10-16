@@ -13,11 +13,13 @@ class Graph:
         return self.graph
 
     def BFS(self, g):
-        # queue for dfs not visited nodes
+        # queue for dfs visited nodes
         queue = []
         visited = set()
 
-        # connected component
+        # connected component, running loop for every not seeen nodes in graph
+        # suppose one connected component is fully traversed,
+        # so two print other component we need to run loop for every node if it's not visited
         for val in range(len(g)):
             if val not in visited:
                 visited.add(val)
