@@ -47,6 +47,7 @@ g.addEdge(2, 3)
 g.addEdge(3, 5)
 g.addEdge(5, 7)
 g.addEdge(4, 6)
+g.addEdge(6, 8)
 
 # graph = g.addEdge(3, 4)
 

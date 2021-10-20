@@ -1,30 +1,30 @@
-# it's like bfs for graph
+
 from collections import deque
 class Node:
-    def __init__(self,val):
-        self.next = None
+    def __init__(self,data):
+        self.data = data
         self.prev = None
-        self.val = val
+        self.next = None
 
-class InOrder:
+class Levelorder:
     def __init__(self,root):
         self.root = root
-    
 
-    def inordertraversal(self):
+
+    def level(self):
         temp = self.root
         if not temp:
-            print("h")
             return
+
         q = deque()
         q.append(temp)
+
         while q:
-            # c is number of elements in level
             c = len(q)
             while c>0:
-                k = q.popleft()
-                print(k.val,end=" ")
-                
+                temp =q.popleft()
+                print(temp.data,end = " ")
+
                 if temp.prev:
                     q.append(temp.prev)
                 if temp.next:
@@ -33,6 +33,7 @@ class InOrder:
                 c = c-1
                 
             print()
+                    
 
 if __name__ == '__main__':
     root = Node(5)
@@ -42,6 +43,8 @@ if __name__ == '__main__':
     root.prev.next = Node(15)
     root.prev.prev = Node(8)
 
-    inorder = InOrder(root)
-    inorder.inordertraversal()
+    traverse = Levelorder(root)
+    traverse.level()
+
+
 
