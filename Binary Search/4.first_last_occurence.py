@@ -12,9 +12,10 @@ import time
 
 class BinarySearch():
     def __init__(self):
-        self.res = -1
+        self.res = [-1,-1]
+        self.count = 0
 
-    def search(self,array, el, hi=None)->int:
+    def search(self,array, el)->int:
         
         lo,hi = 0,len(array)-1 # could be [0, n], [1, n] etc. Depends on problem
         while (lo < hi):
@@ -32,7 +33,12 @@ class BinarySearch():
         # if we found searched element at lo key then we find the element in array(0 to lo) recursively
         if array[lo] == el:
             # store the found keys of element and replace untill we found left most key
-            self.res = lo
+            self.res[0] = lo
+            
+            # store the right most index of element, we get this first time
+            if self.count == 0:
+                self.res[1] = lo
+                self.count+=1
             return self.search(array[:lo],el)
             
         else:
