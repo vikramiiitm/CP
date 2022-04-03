@@ -1,4 +1,4 @@
-# Number of Times a Sorted array is Rotated
+[3,4,5,1,2]# Number of Times a Sorted array is Rotated
 
 ''' Binary Search
 Comparing the target to mid
@@ -31,10 +31,13 @@ class BinarySearch():
         # returning lo+1 as lo will be the element left to min element(it just how it works with this implementation)
         return lo+1  #answer = (n-(lo+1))%n
             
-arr = [4,5,6,7,1,2,3]
+# arr = [4,5,6,7,1,2,3]
 arr1 =[8,9,1,2,3,4]
+arr = [11,13,15,17]
+# arr = [3,4,5,1,2]
 n = len(arr)
 bs = BinarySearch()
 answer =bs.search(arr)
 print("arrat: ",arr)
 print("Roation times :",(n-answer)%n)
+print(arr[(answer)%n])
