@@ -246,9 +246,11 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="print payloads, do not call the API")
     ap.add_argument("--raw-only", action="store_true", help="skip the markdown table")
     ap.add_argument("--out", default=str(HERE / "results_table.md"))
+    ap.add_argument("--candidates", default=str(HERE / "candidates.json"),
+                    help="candidate spec file (e.g. population.json)")
     args = ap.parse_args()
 
-    spec = load_json(HERE / "candidates.json")
+    spec = load_json(Path(args.candidates))
     cases = spec["test_cases"]
     if args.tier is not None:
         cases = [c for c in cases if c["tier"] == args.tier]
