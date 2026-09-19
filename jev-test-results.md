@@ -45,6 +45,37 @@ give 3.81 / 3.79 / 3.84, record all three.
 
 ---
 
+## Reading the population scorecard
+
+`score_population.py` compares Jev's output on the 138-candidate labelled population
+(`jev-test/population.json`) against each candidate's `_expected` label, and writes
+`scorecard.md`. Each metric maps to one of the brief's questions:
+
+- **coreSkillDepth — Spearman rank correlation.** Are candidates *ordered* the way the labels
+  say they should be? Ranking is what we actually build on, so this matters more than absolute
+  values. ~1.0 = same order; ≥0.8 strong, 0.5–0.8 moderate, below that the ranking is unreliable.
+  The **"within expected band"** hit-rate is the absolute-value check; the **largest gaps** list
+  names the candidates Jev scored most differently from the label — start your review there.
+- **seniorityFit — accuracy + confusion matrix.** Rows are the expected level, columns are what
+  Jev picked. Off-diagonal cells are mistakes; a cluster in one cell (e.g. everything → `matched`)
+  means the model isn't really discriminating level.
+- **hasShippedProduction — accuracy + TP/TN/FP/FN.** Thresholds Jev's probability at 0.5.
+  **False positives** (said shipped, didn't) are the expensive error for us.
+- **Stability — stdev across runs.** Same input, repeated. Small is fine; large (>~0.3 on
+  coreSkillDepth) means we can't build on a single call.
+- **Confidence — range + spread.** If confidence barely moves across very different candidates,
+  the plan to route low-confidence cases to human review is dead (see Tier 2). We want it to vary.
+
+> ⚠️ **The scorecard is only as good as the labels.** `_expected` labels are heuristic (a
+> transparent `specialism_fit × demonstration` formula, not a recruiter). A perfect scorecard
+> against imperfect labels proves nothing. **Have a recruiter review the labels first** — that
+> review is the "portfolios where we already know who we'd rank highly" step the brief calls the
+> real test. `python3 score_population.py --simulate` shows the scorecard format using fake
+> numbers derived from the labels (it scores ~100% by construction — ignore the values, it only
+> proves the pipeline runs).
+
+---
+
 ## Tier results
 
 ### Tier 1 — Clean separation (baseline)
