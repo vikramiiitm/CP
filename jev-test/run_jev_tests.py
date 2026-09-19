@@ -270,6 +270,20 @@ def main():
     if args.dry_run or args.raw_only:
         return
 
+    # machine-readable results for the scorer
+    results_json = {
+        "model": MODEL, "endpoint": BASE_URL + ENDPOINT_PATH, "runs": args.runs,
+        "cases": [
+            {
+                "id": r["case"]["id"], "label": r["case"]["label"], "tier": r["case"]["tier"],
+                "expected": r["case"].get("_expected"),
+                "rows": r["rows"],
+            }
+            for r in results
+        ],
+    }
+    (HERE / "results.json").write_text(json.dumps(results_json, indent=2) + "\n")
+
     table = render_table(results)
     header = (f"# Jev results table\n\n"
               f"**Generated:** {date.today().isoformat()}  \n"
@@ -279,6 +293,7 @@ def main():
     Path(args.out).write_text(header + table + "\n")
     print("\n" + table)
     print(f"\nWrote {args.out}")
+    print(f"Wrote {HERE / 'results.json'} (feed this to score_population.py)")
     print(f"Raw responses in {HERE / 'raw_responses'}/")
 
 

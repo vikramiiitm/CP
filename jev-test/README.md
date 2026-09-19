@@ -85,13 +85,40 @@ Every candidate carries an `_expected` block:
 > of Jev `coreSkillDepth` vs the expected order, and confusion on `seniorityFit` /
 > `hasShippedProduction`).
 
-Run it, and extend it by editing `SPECS`:
+`population.json` ships with **138 candidates** (realistically skewed — mostly non-strong
+applicants, a few great ones). Regenerate or resize by editing `ARCHETYPES` in the generator.
+
+### Full workflow (end to end)
 
 ```bash
-python3 generate_population.py                                  # regenerate population.json
-python3 run_jev_tests.py --candidates population.json --tier 9  # score the whole population
-python3 run_jev_tests.py --candidates population.json --dry-run # inspect payloads first
+cd jev-test
+
+# 0. (optional) rebuild / resize the population
+python3 generate_population.py
+
+# 1. sanity-check payloads without an API key or network
+python3 run_jev_tests.py --candidates population.json --dry-run
+
+# 2. run it for real (writes results.json + results_table.md + raw_responses/)
+export TYPESAFE_API_KEY=...            # a fresh key
+python3 run_jev_tests.py --candidates population.json --tier 9
+
+# 3. score Jev's numbers against the labels -> scorecard.md
+python3 score_population.py
+
+# See the scorecard format WITHOUT any API (fabricates results from the labels; FAKE):
+python3 score_population.py --simulate
 ```
+
+`score_population.py` reports: Spearman rank correlation of Jev `coreSkillDepth` vs the
+expected order, "within expected band" hit-rate, a `seniorityFit` confusion matrix, a
+`hasShippedProduction` confusion, per-candidate stability (stdev across runs), and whether
+confidence actually varies. That last one decides whether the human-review routing plan is viable.
+
+> `--simulate` numbers are fabricated from the labels and tell you **nothing** about Jev —
+> they only prove the pipeline runs (it scores 100% by construction, with a banner saying so).
+> `results.json`, `results_table.md`, `scorecard*.md`, and `raw_responses/*.json` are git-ignored
+> runtime outputs.
 
 ## Phase 2 cases (what to watch)
 

@@ -59,16 +59,21 @@ SENIORITY = {  # -> (years, seniorityFit vs "5+ years", title prefix)
     "principal": (16, "over", "Principal "),
 }
 
-NAMES = [
-    "Rahul Sharma", "Priya Nair", "Imran Qureshi", "Anthony Fernandes", "Sneha Patel",
-    "Arjun Reddy", "Fatima Sheikh", "Joseph Mathew", "Ananya Ghosh", "Vikas Yadav",
-    "Meera Iyer", "Daniyal Khan", "Grace DSouza", "Rohit Verma", "Lakshmi Menon",
-    "Sahil Kapoor", "Aisha Begum", "Thomas Varghese", "Divya Rao", "Karan Mehta",
-    "Zoya Ansari", "Nikhil Joshi", "Ritu Agarwal", "Sunil Pillai", "Nadia Hussain",
-    "Aditya Bose", "Kavya Krishnan", "Farhan Ali", "Neha Gupta", "Manish Tiwari",
-    "Pooja Shetty", "Yusuf Ahmed", "Rebecca Thomas", "Harsh Vardhan", "Ishita Sen",
-    "Deepak Choudhary", "Sara Kurian", "Amit Ranjan", "Tara Malhotra", "Omar Farooq",
+_FIRST = [
+    "Rahul", "Priya", "Imran", "Anthony", "Sneha", "Arjun", "Fatima", "Joseph",
+    "Ananya", "Vikas", "Meera", "Daniyal", "Grace", "Rohit", "Lakshmi", "Sahil",
+    "Aisha", "Thomas", "Divya", "Karan", "Zoya", "Nikhil", "Ritu", "Sunil",
+    "Nadia", "Aditya", "Kavya", "Farhan", "Neha", "Manish", "Pooja", "Yusuf",
+    "Rebecca", "Harsh", "Ishita", "Deepak", "Sara", "Amit", "Tara", "Omar",
 ]
+_LAST = [
+    "Sharma", "Nair", "Qureshi", "Fernandes", "Patel", "Reddy", "Sheikh", "Mathew",
+    "Ghosh", "Yadav", "Iyer", "Khan", "DSouza", "Verma", "Menon", "Kapoor",
+    "Begum", "Varghese", "Rao", "Mehta", "Ansari", "Joshi", "Agarwal", "Pillai",
+]
+# Deterministic unique-ish names for up to len(_FIRST)*len(_LAST) candidates.
+NAMES = [f"{_FIRST[i % len(_FIRST)]} {_LAST[(i // len(_FIRST)) % len(_LAST)]}"
+         for i in range(len(_FIRST) * len(_LAST))]
 CITIES = ["Bengaluru", "Pune", "Hyderabad", "Chennai", "Gurugram", "Mumbai", "Kochi",
           "Indore (tier-2)", "Bhagalpur (small town)", "Remote"]
 COMPANIES = {
@@ -89,64 +94,63 @@ ROUTES = {
     "mca":         "MCA, {}",
 }
 
-# ---- SPECS: (name_i, city_i, specialism, seniority, demo, route, style, signals) #
-# style: neutral|terse|verbose ; signals: subset of gap/jobhop/oss/pub/longtenure/freelance/services
-SPECS = [
-    # --- strong backend-django matches, various seniorities/styles ---
-    (0, 0, "backend_django", "senior", "led", "top_degree", "neutral", []),
-    (1, 1, "backend_django", "senior", "several", "degree", "verbose", ["longtenure"]),
-    (2, 2, "backend_django", "mid", "several", "degree", "neutral", []),
-    (3, 3, "backend_django", "junior", "one", "bootcamp", "neutral", []),
-    (4, 4, "backend_django", "staff", "led", "top_degree", "terse", ["oss"]),
-    (5, 5, "backend_django", "principal", "led", "degree", "verbose", ["longtenure"]),
-    (6, 6, "backend_django", "senior", "several", "selftaught", "neutral", ["oss"]),
-    (7, 7, "backend_django", "mid", "one", "careerchange", "neutral", ["gap"]),
-    (8, 8, "backend_django", "senior", "several", "degree", "terse", ["gap"]),
-    (9, 9, "fullstack_django", "senior", "several", "degree", "neutral", ["startup"]),
-    (10, 0, "fullstack_django", "mid", "several", "bootcamp", "verbose", []),
-    (11, 1, "fullstack_django", "junior", "one", "degree", "neutral", []),
-    # --- adjacent (partial fit): backend but not django ---
-    (12, 2, "backend_other", "senior", "led", "top_degree", "neutral", []),
-    (13, 3, "backend_other", "mid", "several", "degree", "neutral", ["jobhop"]),
-    (14, 4, "backend_other", "senior", "several", "degree", "terse", []),
-    # --- data engineering (weak-ish fit for this role) ---
-    (15, 5, "data_eng", "senior", "led", "degree", "neutral", []),
-    (16, 6, "data_eng", "mid", "several", "mca", "verbose", []),
-    # --- ML / research (poor fit) ---
-    (17, 7, "ml", "senior", "led", "phd", "verbose", ["pub"]),
-    (18, 8, "ml", "mid", "several", "degree", "neutral", []),
-    # --- frontend / mobile / devops / qa (poor fit, tests discrimination) ---
-    (19, 9, "frontend", "senior", "led", "degree", "neutral", []),
-    (20, 0, "mobile", "senior", "several", "degree", "neutral", []),
-    (21, 1, "devops", "senior", "led", "degree", "terse", ["oss"]),
-    (22, 2, "qa", "mid", "several", "degree", "neutral", []),
-    # --- services-company (unclear ownership) ---
-    (23, 3, "backend_django", "senior", "several", "mca", "verbose", ["services"]),
-    (24, 4, "fullstack_django", "mid", "several", "degree", "neutral", ["services", "jobhop"]),
-    # --- freelancers ---
-    (25, 5, "backend_django", "mid", "several", "selftaught", "neutral", ["freelance"]),
-    (26, 6, "fullstack_django", "senior", "several", "bootcamp", "verbose", ["freelance"]),
-    # --- juniors / interns / tutorial-level (weak) ---
-    (27, 7, "backend_django", "intern", "one", "degree", "neutral", []),
-    (28, 8, "fullstack_django", "junior", "claimed", "bootcamp", "verbose", []),
-    (29, 9, "backend_django", "junior", "none", "selftaught", "verbose", []),
-    # --- claims-heavy / weak substance ---
-    (30, 0, "backend_django", "mid", "claimed", "degree", "verbose", []),
-    (31, 1, "backend_other", "junior", "claimed", "bootcamp", "verbose", []),
-    # --- overqualified ---
-    (32, 2, "backend_django", "principal", "led", "top_degree", "terse", ["oss", "longtenure"]),
-    (33, 3, "backend_django", "staff", "led", "degree", "neutral", ["longtenure"]),
-    # --- career changers ---
-    (34, 4, "backend_django", "mid", "several", "careerchange", "verbose", ["gap"]),
-    (35, 5, "data_eng", "mid", "several", "careerchange", "neutral", ["gap"]),
-    # --- returners / gaps ---
-    (36, 6, "backend_django", "senior", "several", "degree", "neutral", ["gap", "longtenure"]),
-    (37, 7, "fullstack_django", "senior", "several", "degree", "terse", ["gap"]),
-    # --- strong OSS but thin employment ---
-    (38, 8, "backend_django", "junior", "several", "selftaught", "neutral", ["oss"]),
-    # --- solid mid, unremarkable ---
-    (39, 9, "backend_django", "mid", "several", "degree", "neutral", []),
+# ---- Weighted archetypes -> a realistically-skewed applicant population -------- #
+# A real applicant pool for a Senior Backend Django role is mostly NOT strong
+# matches: lots of adjacent/off-target/junior/claims-heavy applicants, a few great
+# ones. Each row: (count, specialism, seniority, demo, routes, styles, signal_sets).
+# A field given as a list is cycled across that archetype's `count` candidates.
+# style: neutral|terse|verbose ; signals: gap/jobhop/oss/pub/longtenure/freelance/services
+ARCHETYPES = [
+    # strong, in-role matches (the minority)
+    (12, "backend_django", "senior", ["led", "several"], ["top_degree", "degree", "selftaught"], ["neutral", "terse", "verbose"], [[], ["oss"], ["longtenure"]]),
+    (5,  "backend_django", "staff", "led", ["top_degree", "degree"], ["terse", "neutral"], [["oss", "longtenure"], ["longtenure"]]),
+    (3,  "backend_django", "principal", "led", ["top_degree", "degree"], ["terse", "neutral"], [["oss", "longtenure"]]),  # overqualified
+    (12, "backend_django", "mid", ["several", "one"], ["degree", "mca", "bootcamp"], ["neutral", "verbose"], [[], ["gap"]]),
+    (8,  "backend_django", "junior", ["one", "several"], ["bootcamp", "degree", "selftaught"], ["neutral", "verbose"], [[], ["oss"]]),
+    # partial fit: full-stack with Django
+    (14, "fullstack_django", ["senior", "mid", "junior"], ["several", "one"], ["degree", "bootcamp", "mca"], ["neutral", "verbose", "terse"], [[], ["startup"], ["jobhop"]]),
+    # adjacent: backend, not Django
+    (12, "backend_other", ["senior", "mid"], ["led", "several"], ["top_degree", "degree"], ["neutral", "terse"], [[], ["jobhop"]]),
+    # weak fit: data engineering
+    (8,  "data_eng", ["senior", "mid"], ["led", "several"], ["degree", "mca"], ["neutral", "verbose"], [[]]),
+    # poor fit: ML/research
+    (6,  "ml", ["senior", "mid"], ["led", "several"], ["phd", "degree"], ["verbose", "neutral"], [["pub"], []]),
+    # poor fit: frontend/mobile/devops/qa (discrimination test)
+    (12, ["frontend", "mobile", "devops", "qa"], ["senior", "mid"], ["led", "several"], ["degree", "bootcamp"], ["neutral", "terse"], [[], ["oss"]]),
+    # junior/intern/tutorial-level (weak)
+    (10, ["backend_django", "fullstack_django"], ["junior", "intern"], ["one", "none", "claimed"], ["bootcamp", "selftaught", "degree"], ["verbose", "neutral"], [[]]),
+    # claims-heavy / keyword-y, thin substance (weak)
+    (8,  ["backend_django", "backend_other"], "mid", "claimed", ["degree", "bootcamp"], ["verbose"], [[]]),
+    # services-company (ambiguous ownership)
+    (8,  ["backend_django", "fullstack_django"], ["senior", "mid"], "several", ["mca", "degree"], ["verbose", "neutral"], [["services"], ["services", "jobhop"]]),
+    # freelancers (ambiguous outcomes)
+    (8,  ["backend_django", "fullstack_django"], ["senior", "mid"], "several", ["selftaught", "bootcamp"], ["neutral", "verbose"], [["freelance"]]),
+    # career changers (+ gaps)
+    (6,  ["backend_django", "data_eng"], "mid", ["several", "one"], ["careerchange"], ["verbose", "neutral"], [["gap"]]),
+    # returners with gaps
+    (6,  "backend_django", "senior", "several", ["degree", "top_degree"], ["neutral", "terse"], [["gap", "longtenure"], ["gap"]]),
 ]
+
+
+def _cycle(v, j):
+    return v[j % len(v)] if isinstance(v, (list, tuple)) else v
+
+
+def build_specs():
+    specs, i = [], 0
+    for count, spec_o, sen_o, demo_o, routes, styles, sig_sets in ARCHETYPES:
+        for j in range(count):
+            specs.append((
+                i, i % len(CITIES),
+                _cycle(spec_o, j), _cycle(sen_o, j), _cycle(demo_o, j),
+                routes[j % len(routes)], styles[j % len(styles)],
+                list(sig_sets[j % len(sig_sets)]),
+            ))
+            i += 1
+    return specs
+
+
+SPECS = build_specs()
 
 YEAR_BASE = 2025
 
