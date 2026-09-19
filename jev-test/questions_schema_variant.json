@@ -1,0 +1,29 @@
+{
+  "_comment": "Tier 7 (schema sensitivity) variant: SAME MEANING as questions_schema.json, reworded. coreSkillDepth here has a 6th level added and level wording changed; seniorityFit reworded; hasShippedProduction reworded. Used only by cases with schema_ref set. Compare results against the base schema to measure brittleness.",
+
+  "coreSkillDepth": {
+    "type": "score",
+    "instructions": "Assess how deeply the candidate has actually applied the role's essential skills, weighting demonstrated project work over self-reported claims.",
+    "criteria": [
+      "The required skills are entirely absent from the portfolio",
+      "The skills appear only as claims, with no supporting project",
+      "At least one project genuinely uses the skills",
+      "Several projects make real use of the skills",
+      "The candidate has owned production systems built on these skills",
+      "The candidate has led or architected significant production systems on these skills"
+    ]
+  },
+  "seniorityFit": {
+    "type": "choice",
+    "instructions": "Compared with the seniority the role requires, how does this candidate's level compare?",
+    "criteria": {
+      "under": "Below what the role requires",
+      "matched": "About right for the role",
+      "over": "Well beyond the role; might decline it"
+    }
+  },
+  "hasShippedProduction": {
+    "type": "noul",
+    "instructions": "Has the candidate shipped software that served real users beyond their immediate team, in a live production setting?"
+  }
+}
