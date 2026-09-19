@@ -29,6 +29,7 @@ python3 run_jev_tests.py --dry-run --tier 1
 python3 run_jev_tests.py                 # everything, 3 runs each
 python3 run_jev_tests.py --tier 1        # one tier
 python3 run_jev_tests.py --case t2_weak_but_loud --runs 5
+python3 run_jev_tests.py --tier 8        # real-world-style resumes
 ```
 
 Results table → `results_table.md`; raw JSON → `raw_responses/`.

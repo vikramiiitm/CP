@@ -175,6 +175,33 @@ question schema is a load-bearing component needing version control + regression
 every change.
 **What happened / Pass or fail / Surprising:** _pending_
 
+### Tier 8 — Real-world-style resumes (bridge to the real-portfolio trial)
+
+**Candidates tested:** resume-shaped candidates with companies, dates, bullet points, education
+and certs — closer to what real CVs feed in. All companies fictional.
+`rw_bigtech_generalist` (strong Python, thin on Django), `rw_bootcamp_junior` (real but mentored),
+`rw_startup_generalist` (broad ownership, less depth), `rw_contractor_freelance` (many short gigs,
+outcomes unknown), `rw_oss_maintainer` (deep OSS, thin employment, production is others'),
+`rw_return_from_break` (strong senior + stated 3y gap), `rw_services_company` (big clients, unclear
+individual ownership).
+
+| Candidate | Run | coreSkillDepth | Conf | seniorityFit | Conf | hasShippedProduction |
+|---|---|---|---|---|---|---|
+| bigtech generalist | 1–3 | | | | | |
+| bootcamp junior | 1–3 | | | | | |
+| startup generalist | 1–3 | | | | | |
+| contractor/freelance | 1–3 | | | | | |
+| OSS maintainer | 1–3 | | | | | |
+| return from break | 1–3 | | | | | |
+| services company | 1–3 | | | | | |
+
+**What to watch:** these are deliberately ambiguous the way real resumes are. Does the model handle
+"shipped, but by others" (OSS maintainer, contractor handovers) sensibly on `hasShippedProduction`?
+Does it distinguish individual ownership from big-team/big-client work (`rw_services_company` vs
+`rw_startup_generalist`)? Does the stated career gap depress the score (overlaps with Tier 6)? Low,
+varied confidence here is the *good* outcome.
+**What happened / Pass or fail / Surprising:** _pending_
+
 ---
 
 ## Vendor answers

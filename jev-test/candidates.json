@@ -465,6 +465,187 @@
           {"id": "p2", "title": "Marketing data pipeline", "role": "one of four engineers", "production": true, "users_claimed": "internal", "domain": "media", "has_problem_process_outcome": false, "summary": "Worked on ETL jobs moving campaign data into BigQuery. Used Python and Airflow."}
         ]
       }
+    },
+
+    {
+      "id": "rw_bigtech_generalist",
+      "tier": 8,
+      "label": "Real-world CV: big-tech generalist, strong Python, light on Django",
+      "_note": "tier 8 = realistic resume-shaped candidates (companies, dates, bullets, education) bridging Tier 1 toward the real-portfolio trial. All companies are fictional.",
+      "candidate": {
+        "headline": "Software Engineer II — distributed systems & backend",
+        "summary": "Backend engineer with 7 years at large-scale product companies. Comfortable owning services end to end. Most recent work is Go/gRPC; Python and Postgres earlier in career; limited hands-on Django.",
+        "total_years_claimed": 7,
+        "location": "Bengaluru, India",
+        "skills": [
+          {"name": "Python", "claimed_years": 6, "demonstrated_in": ["e1", "e2"]},
+          {"name": "PostgreSQL", "claimed_years": 6, "demonstrated_in": ["e1", "e2"]},
+          {"name": "Go", "claimed_years": 4, "demonstrated_in": ["e1"]},
+          {"name": "Django", "claimed_years": 2, "demonstrated_in": ["e2"]},
+          {"name": "AWS", "claimed_years": 5, "demonstrated_in": ["e1", "e2"]}
+        ],
+        "experience": [
+          {"id": "e1", "company": "Nimbus Commerce", "title": "Software Engineer II", "start": "2021", "end": "present", "location": "Bengaluru", "production": true, "users_claimed": "40M MAU", "bullets": ["Own the order-fulfilment service (Go, gRPC, PostgreSQL) handling ~8k req/s at peak.", "Cut p99 latency 45% by redesigning the inventory reservation path.", "On-call rotation for a tier-1 service; wrote the runbooks."]},
+          {"id": "e2", "company": "PayBridge", "title": "Backend Engineer", "start": "2018", "end": "2021", "location": "Pune", "production": true, "users_claimed": "internal + merchants", "bullets": ["Built merchant-onboarding APIs in Python/Django on PostgreSQL.", "Migrated a monolith module to a service; owned it in production for 18 months."]}
+        ],
+        "education": "B.Tech Computer Science, state engineering college, 2018",
+        "projects": [
+          {"id": "e1", "title": "Order fulfilment service", "role": "owner", "production": true, "has_problem_process_outcome": true, "summary": "See experience e1."},
+          {"id": "e2", "title": "Merchant onboarding (Django)", "role": "one of four", "production": true, "has_problem_process_outcome": true, "summary": "See experience e2."}
+        ]
+      }
+    },
+    {
+      "id": "rw_bootcamp_junior",
+      "tier": 8,
+      "label": "Real-world CV: bootcamp grad, 1.5y at one startup, real but junior",
+      "candidate": {
+        "headline": "Junior Backend Developer | Django | Python",
+        "summary": "Career switcher (previously retail management). Completed a 6-month full-stack bootcamp in 2023, then joined an early-stage startup where I've shipped real features to production.",
+        "total_years_claimed": 2,
+        "location": "Remote (India)",
+        "skills": [
+          {"name": "Python", "claimed_years": 2, "demonstrated_in": ["e1"]},
+          {"name": "Django", "claimed_years": 2, "demonstrated_in": ["e1"]},
+          {"name": "PostgreSQL", "claimed_years": 1, "demonstrated_in": ["e1"]}
+        ],
+        "experience": [
+          {"id": "e1", "company": "LeafRoute (seed-stage logistics)", "title": "Junior Software Engineer", "start": "2023", "end": "present", "location": "Remote", "production": true, "users_claimed": "~600 SMB customers", "bullets": ["Built and shipped the driver check-in feature (Django REST + PostgreSQL) used daily by drivers.", "Added Celery tasks for delivery-SLA notifications.", "Fixed ~120 bugs; pair-programmed most larger changes with the senior engineer."]}
+        ],
+        "education": "6-month full-stack bootcamp, 2023. BA Commerce, 2016.",
+        "certifications": ["AWS Certified Cloud Practitioner (2024)"],
+        "projects": [
+          {"id": "e1", "title": "Driver check-in feature", "role": "implementer (mentored)", "production": true, "has_problem_process_outcome": true, "summary": "Shipped to production but scoped and reviewed by a senior engineer."}
+        ]
+      }
+    },
+    {
+      "id": "rw_startup_generalist",
+      "tier": 8,
+      "label": "Real-world CV: startup generalist, wore many hats, shipped end-to-end",
+      "candidate": {
+        "headline": "Founding Engineer → Backend Lead",
+        "summary": "Generalist who has taken products from zero to launch at two startups. Django/Postgres backend, but also did frontend, DevOps and some data work because someone had to. Strong ownership, less depth of specialisation.",
+        "total_years_claimed": 5,
+        "location": "Hyderabad, India",
+        "skills": [
+          {"name": "Python", "claimed_years": 5, "demonstrated_in": ["e1", "e2"]},
+          {"name": "Django", "claimed_years": 5, "demonstrated_in": ["e1", "e2"]},
+          {"name": "PostgreSQL", "claimed_years": 5, "demonstrated_in": ["e1", "e2"]},
+          {"name": "React", "claimed_years": 3, "demonstrated_in": ["e2"]},
+          {"name": "AWS", "claimed_years": 4, "demonstrated_in": ["e1", "e2"]}
+        ],
+        "experience": [
+          {"id": "e1", "company": "ClinicStack (health-tech, ~15 people)", "title": "Founding Engineer", "start": "2022", "end": "present", "location": "Hyderabad", "production": true, "users_claimed": "12 clinics, ~30k patients", "bullets": ["Built the whole backend on Django/PostgreSQL: scheduling, billing, patient records.", "Set up CI/CD and AWS infra; handled HIPAA-style data handling.", "Also built the initial React frontend and did customer onboarding calls."]},
+          {"id": "e2", "company": "Trailhead Apps (agency)", "title": "Full-stack Developer", "start": "2019", "end": "2022", "location": "Hyderabad", "production": true, "users_claimed": "various clients", "bullets": ["Delivered ~8 client web apps (Django + React), each shipped to production.", "Owned deployments and post-launch fixes."]}
+        ],
+        "education": "B.Tech Information Technology, 2019",
+        "projects": [
+          {"id": "e1", "title": "ClinicStack platform", "role": "founding/sole backend", "production": true, "has_problem_process_outcome": true, "summary": "Zero-to-launch health-tech backend, still running across 12 clinics."}
+        ]
+      }
+    },
+    {
+      "id": "rw_contractor_freelance",
+      "tier": 8,
+      "label": "Real-world CV: freelancer, many short gigs, varied stacks, depth unclear",
+      "candidate": {
+        "headline": "Freelance Backend Developer (available)",
+        "summary": "6 years freelancing. 20+ short client projects across Django, Flask, Node and WordPress. Rarely stay past launch, so most work is greenfield build then handover.",
+        "total_years_claimed": 6,
+        "location": "Remote",
+        "skills": [
+          {"name": "Python", "claimed_years": 6, "demonstrated_in": ["e1", "e2", "e3"]},
+          {"name": "Django", "claimed_years": 4, "demonstrated_in": ["e1", "e3"]},
+          {"name": "Flask", "claimed_years": 3, "demonstrated_in": ["e2"]},
+          {"name": "PostgreSQL", "claimed_years": 4, "demonstrated_in": ["e1"]},
+          {"name": "MySQL", "claimed_years": 4, "demonstrated_in": ["e2", "e3"]}
+        ],
+        "experience": [
+          {"id": "e1", "company": "Various clients (Upwork/direct)", "title": "Freelance Backend Developer", "start": "2019", "end": "present", "location": "Remote", "production": true, "users_claimed": "client-dependent, often unknown", "bullets": ["Booking system for a clinic chain (Django/PostgreSQL) — delivered and handed over.", "Inventory API for a retailer (Flask/MySQL).", "~18 other short builds; limited visibility into long-term production outcomes."]}
+        ],
+        "education": "Self-taught; online courses.",
+        "projects": [
+          {"id": "e1", "title": "Clinic booking system", "role": "solo contractor", "production": true, "has_problem_process_outcome": false, "summary": "Built and handed over; no data on how it fared after handover."},
+          {"id": "e2", "title": "Retail inventory API", "role": "solo contractor", "production": true, "has_problem_process_outcome": false, "summary": "Flask/MySQL, short engagement."}
+        ]
+      }
+    },
+    {
+      "id": "rw_oss_maintainer",
+      "tier": 8,
+      "label": "Real-world CV: OSS maintainer, thin formal employment",
+      "candidate": {
+        "headline": "Open-source maintainer & backend engineer",
+        "summary": "Maintain a popular Django extension (used by many projects). Only 2 years of formal employment, but deep Django/PostgreSQL internals knowledge from years of OSS work.",
+        "total_years_claimed": 3,
+        "location": "Kochi, India",
+        "skills": [
+          {"name": "Python", "claimed_years": 7, "demonstrated_in": ["o1", "e1"]},
+          {"name": "Django", "claimed_years": 7, "demonstrated_in": ["o1", "e1"]},
+          {"name": "PostgreSQL", "claimed_years": 6, "demonstrated_in": ["o1"]}
+        ],
+        "experience": [
+          {"id": "e1", "company": "Cedar Analytics", "title": "Backend Engineer", "start": "2022", "end": "present", "location": "Remote", "production": true, "users_claimed": "internal analytics", "bullets": ["Maintain internal Django services and Postgres query performance."]}
+        ],
+        "open_source": [
+          {"id": "o1", "name": "django-queryboost (maintainer)", "stars_claimed": "4.2k", "summary": "A Django ORM performance toolkit. Sole maintainer for 5 years; used in production by third parties (per issue tracker), though I don't operate those deployments."}
+        ],
+        "education": "B.Sc Physics, 2016.",
+        "projects": [
+          {"id": "o1", "title": "django-queryboost", "role": "maintainer", "production": true, "has_problem_process_outcome": true, "summary": "Widely used OSS library; production use is by others, not me."}
+        ]
+      }
+    },
+    {
+      "id": "rw_return_from_break",
+      "tier": 8,
+      "label": "Real-world CV: strong senior, 3-year caregiving gap, recent refresher",
+      "candidate": {
+        "headline": "Senior Backend Engineer (returning after career break)",
+        "summary": "8 years senior backend experience through 2021, then a 3-year full-time caregiving break. Spent the last 6 months refreshing skills and shipped a small production side project. Stated the gap openly.",
+        "total_years_claimed": 8,
+        "location": "Chennai, India",
+        "career_gap": "2021–2024, caregiving (stated)",
+        "skills": [
+          {"name": "Python", "claimed_years": 8, "demonstrated_in": ["e1", "e2", "s1"]},
+          {"name": "Django", "claimed_years": 7, "demonstrated_in": ["e1", "e2"]},
+          {"name": "PostgreSQL", "claimed_years": 7, "demonstrated_in": ["e1", "e2", "s1"]}
+        ],
+        "experience": [
+          {"id": "e1", "company": "MedLedger", "title": "Senior Backend Engineer", "start": "2017", "end": "2021", "location": "Chennai", "production": true, "users_claimed": "hospital networks", "bullets": ["Led the claims-processing backend (Django/PostgreSQL/Celery).", "Mentored 4 engineers; owned the service in production for 3 years."]},
+          {"id": "e2", "company": "Vertex Systems", "title": "Backend Engineer", "start": "2013", "end": "2017", "location": "Chennai", "production": true, "users_claimed": "enterprise", "bullets": ["Built billing and reporting services on Django."]},
+          {"id": "s1", "company": "Side project (2024)", "title": "Solo", "start": "2024", "end": "present", "location": "Remote", "production": true, "users_claimed": "~200 users", "bullets": ["Built and deployed a small habit-tracker API (Django/PostgreSQL) to refresh skills after the break."]}
+        ],
+        "education": "B.E Computer Science, 2013.",
+        "projects": [
+          {"id": "e1", "title": "Claims-processing backend", "role": "lead", "production": true, "has_problem_process_outcome": true, "summary": "3 years in production at hospital networks."}
+        ]
+      }
+    },
+    {
+      "id": "rw_services_company",
+      "tier": 8,
+      "label": "Real-world CV: 6y at IT services firm, lots of projects, ownership unclear",
+      "candidate": {
+        "headline": "Senior Software Engineer — Enterprise Solutions",
+        "summary": "6 years at a large IT services company. Worked across many client engagements. Resume lists impressive clients and scale, but role on each was as part of a large delivery team following specs.",
+        "total_years_claimed": 6,
+        "location": "Noida, India",
+        "skills": [
+          {"name": "Python", "claimed_years": 6, "demonstrated_in": ["e1"]},
+          {"name": "Django", "claimed_years": 5, "demonstrated_in": ["e1"]},
+          {"name": "PostgreSQL", "claimed_years": 5, "demonstrated_in": ["e1"]},
+          {"name": "Oracle", "claimed_years": 4, "demonstrated_in": ["e1"]}
+        ],
+        "experience": [
+          {"id": "e1", "company": "GlobalTech Services", "title": "Senior Software Engineer", "start": "2018", "end": "present", "location": "Noida", "production": true, "users_claimed": "Fortune-500 clients, 'millions of users'", "bullets": ["Delivered modules for large healthcare and banking clients (Django/PostgreSQL).", "Part of 20–40 person delivery teams; implemented to detailed specs written by architects.", "Followed CMMI processes; limited autonomy over design decisions."]}
+        ],
+        "education": "B.Tech, 2018. MCA, 2020 (part-time).",
+        "projects": [
+          {"id": "e1", "title": "Client healthcare module", "role": "one of ~30 engineers", "production": true, "has_problem_process_outcome": false, "summary": "Large-scale client work but individual ownership is hard to attribute."}
+        ]
+      }
     }
   ]
 }
