@@ -1,0 +1,26 @@
+{
+  "coreSkillDepth": {
+    "type": "score",
+    "instructions": "Judge the candidate's depth in the role's must-have skills, based on what the projects demonstrate rather than what the candidate claims.",
+    "criteria": [
+      "No evidence of the required skills",
+      "Skills listed but not demonstrated in any project",
+      "Demonstrated in one project",
+      "Demonstrated across several projects",
+      "Led or architected production work using these skills"
+    ]
+  },
+  "seniorityFit": {
+    "type": "choice",
+    "instructions": "Relative to the role's stated seniority, where does this candidate sit?",
+    "criteria": {
+      "under": "Clearly below the required level",
+      "matched": "At the required level",
+      "over": "Significantly above; may not accept this role"
+    }
+  },
+  "hasShippedProduction": {
+    "type": "noul",
+    "instructions": "Does the portfolio show work that ran in production with real users outside the candidate's own team?"
+  }
+}
